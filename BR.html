@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3ee1c2371d.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <h3>
+                B R <span>Architects</span>
+            </h3>
+            <ul>
+
+            </ul>
+            <button id="nav-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <div class="logo-sec">
+        <h1>BR</h1><span>Architects</span>
+    </div>
+
+    <div class="huts-sec">
+        <h2>
+            Projects
+            <hr style="margin-top:20px ;">
+        </h2>
+        <div class="huts-div">
+        </div>
+    </div>
+
+    <div class="about-sec">
+        <h2>
+            About
+            <hr style="margin-top:20px ;">
+        </h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <div class="persons-div">
+        </div>
+    </div>
+
+    <div class="form-sec">
+        <h2>
+            Contact Us
+            <hr style="margin-top:20px ;">
+        </h2>
+        <p>Lets get in touch and talk about your next project.</p>
+        <div>
+            <input id="name" type="text" placeholder="Name">
+            <input id="email" type="text" placeholder="E-mail">
+            <input id="sub" type="text" placeholder="Subject">
+            <input id="com" type="text" placeholder="Comment">
+        </div>
+        <button onclick="thanks()">Contact US</button>
+        <div id="thanks-div">
+            <h2>Thanks for Contacting Us!</h2>
+            <p>Kindly Wait for our Response. Our Customer Support will contact you as soon as possible :)</p>
+        </div>
+    </div>
+
+
+    <div class="map-div">
+        <img src="./img/map.jpg" alt="">
+    </div>
+
+    <footer>
+        <h4>Powered by W3.Css</h4>
+    </footer>
+</body>
+<script>
+    const navData = [
+        {
+            item: 'Project'
+        },
+        {
+            item: 'About'
+        },
+        {
+            item: 'Contact'
+        }
+    ]
+
+    const hutsData = [
+        {
+            heading: 'Summer House',
+            image: 'url(./img/house5.jpg)'
+        },
+        {
+            heading: 'Brick House',
+            image: 'url(./img/house2.jpg)'
+        },
+        {
+            heading: 'Renovated',
+            image: 'url(./img/house3.jpg)'
+        },
+        {
+            heading: 'Barnhouse',
+            image: 'url(./img/house4.jpg)'
+        },
+        {
+            heading: 'Summer House',
+            image: 'url(./img/house5.jpg)'
+        },
+        {
+            heading: 'Brick House',
+            image: 'url(./img/house2.jpg)'
+        },
+        {
+            heading: 'Renovated',
+            image: 'url(./img/house3.jpg)'
+        },
+        {
+            heading: 'Barnhouse',
+            image: 'url(./img/house4.jpg)'
+        }
+    ]
+
+    const persons = [
+        {
+            img: './img/team1.jpg',
+            name: 'John Doe',
+            rank: 'CEO & Founder',
+        },
+        {
+            img: './img/team2.jpg',
+            name: 'Jane Doe',
+            rank: 'CEO & Founder',
+        },
+        {
+            img: './img/team3.jpg',
+            name: 'Mike Ross',
+            rank: 'CEO & Founder',
+        },
+        {
+            img: './img/team4.jpg',
+            name: 'Dan Star',
+            rank: 'CEO & Founder',
+        }
+    ]
+    const thanksDiv = document.getElementById('thanks-div')
+    const name = document.getElementById('name')
+    const email = document.getElementById('email')
+    const sub = document.getElementById('sub')
+    const com = document.getElementById('com')
+    const reg = /[A-Za-z\d]+@{1}[A-Za-z]+\.[A-Za-z]{2,10}/g
+
+    const arr = []
+
+    const navUl = document.querySelector('nav ul')
+    const hutsDiv = document.querySelector('.huts-div')
+    const navBtn = document.getElementById('nav-btn')
+    const nav = document.querySelector('nav')
+
+    navBtn.onclick = show = () => {
+        navUl.classList.toggle('show')
+    }
+
+    window.addEventListener('scroll', (e) => {
+        if (scrollY > 150) {
+            nav.style.height = "60px"
+            nav.style.background = "black"
+            nav.style.color = "white"
+        }
+
+        else {
+            nav.style.height = "100px"
+            nav.style.background = "silver"
+            nav.style.color = "black"
+
+        }
+    })
+
+    navData.forEach(ele => {
+        const navLi = document.createElement('li')
+        navUl.appendChild(navLi)
+        navLi.innerHTML = ele.item
+    })
+
+    hutsData.forEach(ele => {
+        const hutCard = document.createElement('div')
+        const head = document.createElement('h3')
+        hutsDiv.appendChild(hutCard)
+        hutCard.classList.add('hutCard')
+        hutCard.appendChild(head)
+        head.classList.add('head')
+        head.innerHTML = ele.heading
+        hutCard.style.backgroundImage = ele.image
+    })
+
+    persons.forEach(ele => {
+        const personsDiv = document.querySelector('.persons-div')
+        const card = document.createElement('div')
+        personsDiv.appendChild(card)
+        card.classList.add('person-card')
+        const image = document.createElement('img')
+        image.src = ele.img
+        const head = document.createElement('h3')
+        head.innerHTML = ele.name
+        const rank = document.createElement('p')
+        rank.innerHTML = ele.rank
+        card.append(image, head, rank,)
+        card.innerHTML += `<p>Phasellus eget enim eu lectus faucibus vestibulum.Suspendisse sodales pellentesque elementum.</p>
+        <button onclick="thanks()">Contact</button>`
+    })
+    thanks = () => {
+        if (name.value && email.value && sub.value != '') 
+        {
+            // console.log(email.value,"here are the email value");
+            let res=email.value.match(reg) 
+            // console.log(res,"test");
+            if (res) {
+                thanksDiv.style.transform = "scaleY(1)"
+                setTimeout(dis, 5000)
+                obj={
+                name:name.value,
+                email:email.value,
+                sub:sub.value,
+                com:com.value,
+                }
+                arr.push(obj)
+                console.log(arr,res, email.value);
+                name.value = ''
+                email.value = ''
+                sub.value = ''
+                com.value = ''
+                email.classList.remove('change')
+            }
+            else {
+                console.log(res,arr,email.value);
+                alert('Invalid Email')
+                email.classList.add('change')
+                email.focus()
+            }
+        }
+        else {
+            alert('Please fill out the form')
+        }
+    }
+
+    const dis = () => {
+        thanksDiv.style.transform = "scaleY(0)"
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</html>
